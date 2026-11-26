@@ -7,21 +7,33 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  quality-check:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run test
-        run: echo "Test passed"
+      - name: Test README
+        run: |
+          test -s README.md
+          grep -qi "Open Source Project" README.md
 
-      - name: Lint check
-        run: echo "Lint passed"
+      - name: Check documentation
+        run: |
+          grep -qi "How to Contribute" README.md
+          grep -qi "Project Rules" README.md
+          grep -qi "Learning Goals" README.md
 
-      - name: Build project
-        run: echo "Build complete"
+      - name: Check contribution instructions
+        run: |
+          grep -qi "Fork this repository" README.md
+          grep -qi "Open a Pull Request" README.md
 
-      - name: Check README
-        run: grep -qi "project" README.md
+      - name: Check Markdown formatting
+        run: |
+          if grep -nE '[[:blank:]]+$' README.md; then
+            echo "Trailing whitespace found"
+            exit 1
+          fi
+          echo "Markdown formatting passed"
