@@ -14,7 +14,7 @@ This project was created as part of our Open Source course. The goal is to learn
 | 3 | Zhiger D | Developer |
 | 4 | Dulat K | Developer |
 | 5 | Yerassyl M| Documentation |
- 
+
 ## Technologies Used
 
 - Git
