@@ -1,0 +1,12 @@
+
+# macOS files
+.DS_Store
+
+# Windows files
+Thumbs.db
+
+# Visual Studio Code
+.vscode/
+
+# IntelliJ IDEA
+.idea/
